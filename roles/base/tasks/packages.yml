@@ -1,0 +1,45 @@
+---
+- name: disable /etc/apt/sources.list
+  copy:
+    dest: /etc/apt/sources.list
+    content: |
+      # This file is managed by Ansible!
+      #
+      # See files in /etc/apt/sources.list.d
+  register: disabled_top_sources_list
+- name: enable non-free and contrib packages
+  copy:
+    content: |
+      # This file is managed by Ansible!
+      Types: deb deb-src
+      URIs: http://deb.debian.org/debian/
+      Suites: trixie
+      Components: main contrib non-free non-free-firmware
+    dest: /etc/apt/sources.list.d/debian.sources
+  register: deb_repo
+- name: checking time of last repository refresh
+  stat:
+    path: /var/cache/apt/pkgcache.bin
+  register: pkgcache
+- name: registering last repository refresh fact
+  set_fact:
+    last_repository_refresh: pkgcache.mtime
+    current_epoch: ansible_date_time.epoch
+- name: refresh repos if needed
+  when: >-
+    disabled_top_sources_list.changed or
+    deb_repo.changed or
+    (last_repository_refresh|int < (current_epoch|int + 84000))
+  apt:
+    update_cache: yes
+- name: install standard software
+  apt:
+    pkg: "{{ base_packages }}"
+
+- name: install command-not-found
+  apt:
+    pkg: command-not-found
+  register: command_not_found
+- name: run apt-file update
+  when: command_not_found.changed
+  command: apt-file update

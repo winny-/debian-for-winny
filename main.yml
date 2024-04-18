@@ -1,0 +1,9 @@
+---
+- become: yes
+  hosts: '*'
+  roles:
+    - role: base
+    - role: desktop
+    # - role: hardware
+    # - role: gui
+

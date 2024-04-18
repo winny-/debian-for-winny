@@ -1,0 +1,10 @@
+---
+- name: install some games
+  apt:
+    pkg:
+      - nethack-console
+      - bsdgames
+      - bsdgames-nonfree
+      - cataclysm-dda-curses
+      - crawl
+      - games-rogue

@@ -1,0 +1,2 @@
+[nightflyer]
+localhost ansible_connection=local

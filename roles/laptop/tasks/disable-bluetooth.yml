@@ -1,0 +1,5 @@
+---
+- name: remove bluetooth support
+  apt:
+    pkg: bluetooth
+    state: absent

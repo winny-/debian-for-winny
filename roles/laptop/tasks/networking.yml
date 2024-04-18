@@ -1,0 +1,27 @@
+---
+- name: install network-manager
+  apt:
+    pkg: network-manager
+- name: Stop ifupdown networks
+  command: 'ifdown -a'
+  register: ifdown_ethernet
+- name: disable ifupdown
+  copy:
+    content: |
+      # This file is managed by Ansible!
+
+      # This file describes the network interfaces available on your system
+      # and how to activate them. For more information, see interfaces(5).
+
+      source /etc/network/interfaces.d/*
+
+      # The loopback network interface
+      auto lo
+      iface lo inet loopback
+    dest: /etc/network/interfaces
+  register: interfaces
+- name: restart NetworkManager
+  service:
+    name: NetworkManager
+    state: restarted
+  when: interfaces.changed or ifdown_ethernet.changed

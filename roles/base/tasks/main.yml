@@ -1,0 +1,5 @@
+---
+# - include_tasks: debconf.yml
+- include_tasks: packages.yml
+- include_tasks: pcspkr.yml
+# - include_tasks: console.yml

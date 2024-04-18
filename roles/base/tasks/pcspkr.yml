@@ -1,0 +1,11 @@
+- name: rmmod pcspkr
+  modprobe:
+    name: pcspkr
+    state: absent
+- name: blacklist pcspkr
+  copy:
+    content: |
+      # This file is managed by Ansible!
+      blacklist pcspkr
+    dest: /etc/modprobe.d/pcspkr.conf
+

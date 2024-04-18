@@ -1,0 +1,12 @@
+
+- name: agree to firmware license
+  debconf:
+    name: firmware-ipw2x00
+    question: firmware-ipw2x00/license/accepted
+    value: true
+    vtype: boolean
+- name: install non-free firmware
+  apt:
+     pkg:
+       - firmware-ipw2x00
+       - firmware-amd-graphics

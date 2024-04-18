@@ -1,0 +1,8 @@
+---
+- name: install laptop tools
+  apt:
+    pkg:
+      - acpi
+      - tlp
+
+

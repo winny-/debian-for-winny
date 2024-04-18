@@ -1,0 +1,11 @@
+---
+- name: set up debconf defaults
+  debconf:
+    name: debconf
+    question: "debconf/{{ item.q }}"
+    value: "{{ item.v }}"
+    vtype: select
+  loop:
+    - {q: fontend, v: NonInteractive}
+    - {q: priority, v: critical}
+

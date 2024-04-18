@@ -1,0 +1,57 @@
+---
+base_packages:
+  - git-core
+  - gnupg2
+  - pass
+  - stow
+  - ansible-core
+  - tmux
+  - lynx
+  - rsync
+  - htop
+  - doc-base
+  - man
+  - info
+  - keychain
+  - strace
+  - mtr-tiny
+  - iperf3
+  - speedtest-cli
+  - hw-probe
+  - neofetch
+  - mosh
+  - bc
+  - curl
+  - wget
+  - mc
+
+  - console-setup
+  - keyboard-configuration
+  - task-english
+
+  - linux-headers-amd64
+  - linux-image-amd64
+  - zfs-initramfs
+  - dosfstools
+  - btrfs-progs
+  - xfsprogs
+
+  - grub-efi-ia32-bin
+  - grub-pc
+  - grub2
+  
+  - irqbalance
+  - efibootmgr
+  - aptitude
+  - cryptsetup
+  - cryptsetup-initramfs
+  - lvm2
+  - ripgrep
+  - git-lfs
+  - bind9-dnsutils
+  - whois
+  - direnv
+  - parted
+  - gdisk
+
+  - bash-completion

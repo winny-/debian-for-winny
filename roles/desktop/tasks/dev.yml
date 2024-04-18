@@ -1,0 +1,13 @@
+---
+- name: set up hugo
+  apt:
+    pkg:
+      - hugo
+      - git-lfs
+      # XXX
+      # - node-postcss-cli
+- name: git helpers
+  apt:
+    pkg:
+      - gh
+      - ruby-gitlab

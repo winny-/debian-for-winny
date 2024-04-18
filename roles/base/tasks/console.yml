@@ -1,0 +1,21 @@
+---
+- name: install sane console font
+  apt:
+    pkg: fonts-terminus
+
+# XXX The rest of the file doesn't appear to have any effect!
+- name: configure console font
+  debconf:
+    name: console-setup
+    question: "console-setup/{{ item.q }}"
+    value: "{{ item.v }}"
+    vtype: select
+  loop:
+    - {q: fontface47, v: Terminus}
+    - {q: charmap47, v: UTF-8}
+    - {q: codeset47, v: "# Latin1 and Latin5 - western Europe and Turkic languages"}
+    - {q: fontsize-fb47, v: "8x16"}
+  register: console_setup_debconf
+- name: maybe reload console setup
+  command: dpkg-reconfigure console-setup -f noninteractive
+  when: console_setup_debconf.changed
