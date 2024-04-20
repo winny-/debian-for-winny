@@ -9,6 +9,7 @@ base_packages:
   - lynx
   - rsync
   - htop
+  - glances
   - doc-base
   - man
   - info
@@ -24,6 +25,8 @@ base_packages:
   - curl
   - wget
   - mc
+
+  - python-is-python3
 
   - console-setup
   - keyboard-configuration

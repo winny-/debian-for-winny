@@ -11,3 +11,16 @@
     pkg:
       - gh
       - ruby-gitlab
+- name: documentation helpers
+  apt:
+    pkg:
+      - zeal
+- name: haskell dev tools
+  apt:
+    pkg:
+      - haskell-stack
+      - libncurses-dev  # Needed for "hack hoogle"
+- name: Perl docs
+  apt:
+    pkg:
+      - perl-doc
