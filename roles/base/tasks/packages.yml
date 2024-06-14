@@ -36,6 +36,15 @@
   apt:
     pkg: "{{ base_packages }}"
 
+- name: Populate service facts
+  service_facts:
+- name: Disable glances service if it exists
+  service:
+    name: glances
+    enabled: false
+    state: stopped
+  when: "'glances' in ansible_facts.services"
+
 - name: install command-not-found
   apt:
     pkg: command-not-found

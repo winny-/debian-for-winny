@@ -64,5 +64,4 @@ base_packages:
   - gddrescue
   - ncal
 
-  - command-not-found
   - pre-commit
