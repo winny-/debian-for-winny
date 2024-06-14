@@ -20,7 +20,19 @@
     pkg:
       - haskell-stack
       - libncurses-dev  # Needed for "hack hoogle"
-- name: Perl docs
+- name: Extra docs
   apt:
     pkg:
       - perl-doc
+      - bash-doc
+      - make-doc
+- name: VM and docker
+  apt:
+    pkg:
+      - virt-manager
+      - docker.io
+
+- name: Linter
+  apt:
+    pkg:
+      - shellcheck

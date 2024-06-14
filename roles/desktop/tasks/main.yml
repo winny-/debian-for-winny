@@ -11,6 +11,17 @@
     pkg:
       - task-kde-desktop
       - plasma-discover-backend-flatpak
+      # See https://wiki.debian.org/PipeWire
+      # Make sure to run "systemctl --user --now enable wireplumber.service"
+      # Also required to screenshare in Wayland.
+      - wireplumber
+      - kdiskmark
+- name: install extras
+  apt:
+    pkg:
+      - chromium
+      - weechat-curses
+      - obs-studio
 - import_tasks: fonts.yml
 - import_tasks: emacs.yml
 - import_tasks: games.yml
