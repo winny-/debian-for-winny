@@ -6,6 +6,15 @@
       - snapd
       - flatpak
       - nix-setup-systemd
+- name: add flathub
+  community.general.flatpak_remote:
+    name: flathub
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+    method: system
+- name: install Signal
+  community.general.flatpak:
+    name: org.signal.Signal
+    remote: flathub
 - name: install standard KDE desktop
   apt:
     pkg:
