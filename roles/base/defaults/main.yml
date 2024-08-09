@@ -68,3 +68,5 @@ base_packages:
 
   - syncthing
   - fzf
+  - units
+
