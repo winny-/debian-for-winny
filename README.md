@@ -12,3 +12,4 @@ Default target will install necessary ansible roles then run the playbook.
 
 1. Add another playbook for managing user-level settings such as enabling
    user level `wireplumber.service`.
+2. Create a /etc/systemd/sleep.conf.d/ file using variables/defaults.
