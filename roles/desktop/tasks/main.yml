@@ -15,6 +15,15 @@
   community.general.flatpak:
     name: org.signal.Signal
     remote: flathub
+- name: Install tor
+  apt:
+    pkg:
+      - torbrowser-launcher
+- name: Disable tor service because using the launcher
+  service:
+    name: tor
+    enabled: false
+    state: stopped
 - name: Enable touchscreen scrolling in Firefox
   copy:
     content: |
