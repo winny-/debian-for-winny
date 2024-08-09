@@ -65,3 +65,6 @@ base_packages:
   - ncal
 
   - pre-commit
+
+  - syncthing
+  - fzf
