@@ -41,6 +41,7 @@
       - wireplumber
       - libspa-0.2-bluetooth  # Makes bluetooth audio work.
 
+      - syncthingtray-kde-plasma
       - kdiskmark
 - name: install extras
   apt:
@@ -55,11 +56,17 @@
       - dict-foldoc
       - dict-gcide
       - dict-vera
+      - dict-freedict-eng-spa
+      - dict-freedict-spa-eng
       - dictd
       - dict
       # Resume
       - pandoc
       - texlive-full
+      # Publishing
+      - inkscape
+      - gimp
+      - scribus
 - import_tasks: fonts.yml
 - import_tasks: emacs.yml
 - import_tasks: games.yml

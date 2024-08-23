@@ -6,7 +6,11 @@
       - fonts-go
       - fonts-droid-fallback
       - fonts-unifont
+      # Publishing
       - fonts-roboto
+      - ttf-mscorefonts-installer
+      - fonts-fantasque-sans
+# XXX always changed.
 - name: custom font configuration
   ansible.posix.synchronize:
     src: files/etc/fonts/conf.d/
