@@ -6,6 +6,9 @@
       - snapd
       - flatpak
       - nix-setup-systemd
+# XXX always changed.
+- name: Ensure snaps do not auto update
+  command: snap refresh --hold
 - name: add flathub
   community.general.flatpak_remote:
     name: flathub
