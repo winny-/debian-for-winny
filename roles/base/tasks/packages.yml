@@ -17,6 +17,17 @@
       Components: main contrib non-free non-free-firmware
     dest: /etc/apt/sources.list.d/debian.sources
   register: deb_repo
+# https://wiki.debian.org/HowToGetABacktrace
+- name: enable debug repo
+  copy:
+    content: |
+      # This file is managed by Ansible!
+      Types: deb deb-src
+      URIs: http://deb.debian.org/debian-debug/
+      Suites: trixie-debug
+      Components: main contrib non-free non-free-firmware
+    dest: /etc/apt/sources.list.d/debug.sources
+  register: debug_repo
 - name: checking time of last repository refresh
   stat:
     path: /var/cache/apt/pkgcache.bin
@@ -29,6 +40,7 @@
   when: >-
     disabled_top_sources_list.changed or
     deb_repo.changed or
+    debug_repo.changed or
     (last_repository_refresh|int < (current_epoch|int + 84000))
   apt:
     update_cache: yes
