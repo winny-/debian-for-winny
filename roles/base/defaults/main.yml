@@ -69,4 +69,5 @@ base_packages:
   - syncthing
   - fzf
   - units
+  - acpi
 
