@@ -3,6 +3,7 @@
   apt:
     pkg:
       - emacs-pgtk
+      - emacs-common-non-dfsg
       - libvterm-bin
       - libvterm-dev
       - cmake
