@@ -2,7 +2,7 @@
 - name: install emacs stuff
   apt:
     pkg:
-      - emacs-pgtk
+      - emacs-lucid
       - emacs-common-non-dfsg
       - libvterm-bin
       - libvterm-dev
