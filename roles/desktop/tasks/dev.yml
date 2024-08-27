@@ -36,3 +36,13 @@
   apt:
     pkg:
       - shellcheck
+
+- name: Python stuff
+  apt:
+    pkg:
+      - python3-poetry
+      - pipx
+      - python3-pylsp
+      - python3-click
+      - python3-xdg
+      - python3-yaml
