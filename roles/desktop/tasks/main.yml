@@ -6,9 +6,20 @@
       - snapd
       - flatpak
       - nix-setup-systemd
-# XXX always changed.
+
+# XXX Might be better as a custom fact collector.
+- name: Check if snaps are held
+  command: snap refresh --time
+  register: snap_refresh
+  changed_when: False
+- name: Register if snaps are held fact
+  changed_when: False
+  set_fact:
+    snaps_held: "{% if 'hold: forever' in snap_refresh.stdout %}True{% else %}False{% endif %}"
 - name: Ensure snaps do not auto update
   command: snap refresh --hold
+  when: not snaps_held
+
 - name: add flathub
   community.general.flatpak_remote:
     name: flathub
