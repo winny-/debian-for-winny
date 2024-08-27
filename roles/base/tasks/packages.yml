@@ -47,7 +47,16 @@
 - name: install standard software
   apt:
     pkg: "{{ base_packages }}"
-
+- name: Check for zfs
+  command: which zfs
+  check_mode: false
+  changed_when: false
+  failed_when: which_zfs_res.rc > 1
+  register: which_zfs_res
+- name: install zfs
+  apt:
+    pkg: zfs-initramfs
+  when: "zfs or which_zfs_res.rc == 0"
 - name: Populate service facts
   service_facts:
 - name: Disable glances service if it exists

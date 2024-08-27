@@ -36,7 +36,6 @@ base_packages:
 
   - linux-headers-amd64
   - linux-image-amd64
-  - zfs-initramfs
   - dosfstools
   - btrfs-progs
   - xfsprogs
@@ -71,3 +70,4 @@ base_packages:
   - units
   - acpi
 
+zfs: False
