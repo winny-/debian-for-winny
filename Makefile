@@ -5,3 +5,5 @@ run: setup
 
 setup:
 	ansible-galaxy install -r requirements.yml
+
+.PHONY: setup all run
