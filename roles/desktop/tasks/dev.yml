@@ -2,6 +2,8 @@
 - name: set up hugo
   apt:
     pkg:
+      - nodejs
+      - npm
       - hugo
       - git-lfs
       # XXX
