@@ -1,4 +1,9 @@
 ---
+- name: Ensure amd64 multiarch
+  lineinfile: dest=/var/lib/dpkg/arch line="amd64" create=yes
+- name: Ensure i385 multiarch
+  lineinfile: dest=/var/lib/dpkg/arch line="i386" create=yes
+  register: add_i386
 - name: disable /etc/apt/sources.list
   copy:
     dest: /etc/apt/sources.list
