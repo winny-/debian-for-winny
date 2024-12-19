@@ -2,9 +2,10 @@
 
 ## Getting started
 
-```bash
-make
-```
+1. Install Debian bookworm.
+2. Install `ansible` and `make`.
+3. Run `make` to apply this configuration.  Try `make CHECK=1` to run Ansible
+   in check mode.
 
 Default target will install necessary ansible roles then run the playbook.
 
