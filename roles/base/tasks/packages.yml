@@ -18,7 +18,7 @@
       # This file is managed by Ansible!
       Types: deb deb-src
       URIs: http://deb.debian.org/debian/
-      Suites: trixie
+      Suites: trixie bookworm bookworm-updates sid
       Components: main contrib non-free non-free-firmware
     dest: /etc/apt/sources.list.d/debian.sources
   register: deb_repo
@@ -29,10 +29,43 @@
       # This file is managed by Ansible!
       Types: deb deb-src
       URIs: http://deb.debian.org/debian-debug/
-      Suites: trixie-debug
+      Suites: trixie-debug bookworm-debug sid-debug
       Components: main contrib non-free non-free-firmware
     dest: /etc/apt/sources.list.d/debug.sources
   register: debug_repo
+- name: 'Prioritize packages in descending order: trixie, bookworm, sid'
+  copy:
+    dest: /etc/apt/preferences.d/package-priorities
+    content: |
+      # This file is managed by Ansible!
+      Package: *
+      Pin: Release n=trixie
+      Pin-Priority: 580
+
+      Package: *
+      Pin: Release n=trixie-debug
+      Pin-Priority: 580
+
+      Package: *
+      Pin: release n=bookworm
+      Pin-Priority: 550
+
+      Package: *
+      Pin: release n=bookworm-updates
+      Pin-Priority: 550
+
+      Package: *
+      Pin: release n=bookworm-debug
+      Pin-Priority: 550
+
+      Package: *
+      Pin: release n=sid
+      Pin-Priority: 520
+
+      Package: *
+      Pin: release n=sid-debug
+      Pin-Priority: 520
+
 - name: checking time of last repository refresh
   stat:
     path: /var/cache/apt/pkgcache.bin
